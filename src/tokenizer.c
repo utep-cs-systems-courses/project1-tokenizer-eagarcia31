@@ -31,6 +31,7 @@ char *word_terminator(char *word){
   return word + k;
 }
 
+//returns the number of words counted
 int count_words(char *string){
   int words=0;
   int count=0;
@@ -45,4 +46,62 @@ int count_words(char *string){
     string++;
   }
   return count;
+}
+
+char *copy_str(char *input, short length) {
+  char *output = (char*) malloc(sizeof(char) * length + 1);
+
+  if(!output){
+    //Needs to exit program
+  }
+
+  char *c = output;
+
+  for(short k=0; k < length; k++) {
+    *c = *input;
+    if(*c=='\0'){
+      break;
+    }
+    c++;
+    input++;
+  }
+  *c=='\0';
+  return output;
+}
+
+char **tokenize(char* string) {
+  int words = count_words(string);
+  char **tokens = malloc(sizeof(char*) * (words+1));
+
+  if(!tokens) {
+    //Needs to exit program and display error message
+  }
+
+  string = word_start(string);
+  for(int k=0; k < words; k++) {
+    char* terminator = word_terminator(string);
+    tokens[k] = copy_str(string, terminator - string);
+    string = word_start(terminator);
+  }
+
+  char **terminator = tokens + words;
+  *terminator = 0;
+  return tokens;
+}
+
+void print_tokens(char **tokens) {
+  for(char** token = tokens; *token != 0; token++) {
+    printf("\t[%ld] %s\n", token - tokens, *token);
+  }
+}
+
+void free_tokens(char **tokens) {
+  int k = 0;
+  //frees elements within tokens
+  while(tokens[k]) {
+    free(tokens[k]);
+    k++;
+  }
+  //frees an empty tokens
+  free(tokens);
 }
