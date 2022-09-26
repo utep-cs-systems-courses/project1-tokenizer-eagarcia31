@@ -3,6 +3,22 @@
 #include "tokenizer.h"
 #include "history.h"
 
+static void process_input(char *user_input, List *history, int history_length) {
+  if(user_input[1] == ' ' || user_input[1] == '\0' || user_input[1] == 'h'){
+    printf("\tHISTORY:");
+    print_history(history);
+    printf("*******************************************");
+  }
+  else if(user_input[0] == 'q') {
+    free_history(history);
+    puts("EXITING TOKENIZER");
+    exit(EXIT_SUCCESS);
+  }
+  else {
+    //type else
+  }
+}
+
 int main(){
   char user_input[100];
   char **tokens;

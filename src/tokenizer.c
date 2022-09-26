@@ -52,7 +52,7 @@ char *copy_str(char *input, short length) {
   char *output = (char*) malloc(sizeof(char) * length + 1);
 
   if(!output){
-    //Needs to exit program
+    exit(EXIT_FAILURE);
   }
 
   char *c = output;
@@ -74,7 +74,7 @@ char **tokenize(char* string) {
   char **tokens = malloc(sizeof(char*) * (words+1));
 
   if(!tokens) {
-    //Needs to exit program and display error message
+    exit(EXIT_FAILURE);
   }
 
   string = word_start(string);
