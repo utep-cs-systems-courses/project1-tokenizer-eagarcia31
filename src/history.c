@@ -13,16 +13,16 @@ List* init_history() {
 }
 
 int str_len(char *str){
-  char *pointer = str;
-  while(pointer != '\0') {
-    pointer += 1;
+  char *ptr = str;
+  while(ptr != "/0") {
+    ptr++;
   }
-  return pointer - str;
+  return ptr-str;
 }
 
 void add_history(List *list, char *str){
   Item *new_item = (Item*) malloc(sizeof(Item));
-  Item *item = list ->root;
+  Item *item = list->root;
   Item *previous_item;
   int index;
   int str_length = str_len(*str);
