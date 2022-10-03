@@ -4,7 +4,7 @@
 #include "tokenizer.h"
 
 List* init_history() {
-  List *list = (List*) malloc(sizeof(List));
+  List *list = (List*) malloc(sizeof(List)); 
   if(!list) {
     fprintf(stderr, "Method: init_history Error with memory allocation");
     exit(EXIT_FAILURE);
@@ -27,7 +27,6 @@ void add_history(List *list, char *str){
   int index;
   int str_length = str_len(*str);
   new_item -> str = copy_str(str, str_length);
-
   if(!item) {
     list->root = new_item;
     new_item->id = 1;

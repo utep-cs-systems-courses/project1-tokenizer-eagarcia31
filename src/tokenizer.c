@@ -5,7 +5,7 @@
 
 //returns 1 if char is a blank or space
 int space_char(char c){
-  return (c=='\t' || c==' ') && c=='\0';
+  return (c=='\t' || c==' ') && c!='\0';
 }
 
 //return 1 if char is not a blank or space
@@ -90,9 +90,9 @@ char **tokenize(char* string) {
 }
 
 void print_tokens(char **tokens) {
-  for(char** token = tokens; *token != 0; token++) {
+  for(char** token = tokens; *token != 0; token++) 
     printf("\t[%ld] %s\n", token - tokens, *token);
-  }
+  
 }
 
 void free_tokens(char **tokens) {

@@ -41,7 +41,7 @@ int main(){
   puts("\n\n\nWelcome to the Tokenizer");
   puts("Your Available options are:\n\t1. Type a string to store it\n\t2. Type '!h' or '!' to display previous entries\n\t3.Type '!q' to exit the program\n");
   while(1) {
-    printf("> ");
+    printf(">> ");
     fgets(user_input, 100, stdin);
     if(user_input[0] == '!') {
       process_input(user_input, history, history_length);
